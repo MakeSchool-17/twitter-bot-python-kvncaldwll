@@ -1,4 +1,6 @@
 import re
+import operator
+import string
 
 source_text = open('/Users/keivnc/Documents/pride_prejudice.txt').read().split()
 
@@ -7,14 +9,17 @@ histo = {}
 
 def histogram(source_text):
     for word in source_text:
+        word = re.sub("[\,?!_.():;-]", " ", word)
+        word = word.lstrip('\"')
+        word = word.rstrip('\"')
+        word = word.lstrip('\'')
+        word = word.rstrip('\'')
         if word not in histo:
-            add_word = re.sub(r"\W+", "", word)
-            histo[add_word] = 1
+            histo[word] = 1
         else:
-            add_word = re.sub(r"\W+", "", word)
-            histo[add_word] += 1
-
-    return histo
+            histo[word] += 1
+    sort_histo = sorted(histo.items(), key=operator.itemgetter(1))
+    return sort_histo
 
 
 def unique_words(histogram):
