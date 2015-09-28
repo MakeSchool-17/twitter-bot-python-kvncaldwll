@@ -1,21 +1,20 @@
 import re
-import string
 
+source_text = open('/Users/keivnc/Documents/pride_prejudice.txt').read().split()
 
-source_text = open('/Users/keivnc/Documents/pride_prejudice.txt', encoding='utf8').read().split()
+histo = {}
 
-histogram = {}
 
 def histogram(source_text):
     for word in source_text:
-        if word not in histogram:
-            add_word = re.sub(r"\W+", word)
-            histogram[add_word] = 1
+        if word not in histo:
+            add_word = re.sub(r"\W+", "", word)
+            histo[add_word] = 1
         else:
-            add_word = re.sub(r"\W+", word)
-            histogram[add_word] += 1
+            add_word = re.sub(r"\W+", "", word)
+            histo[add_word] += 1
 
-histogram(source_text)
+    return histo
 
 
 def unique_words(histogram):
@@ -23,4 +22,7 @@ def unique_words(histogram):
 
 
 def frequency(word, histogram):
-    return histogram[word]
+    return histo[word]
+
+if __name__ == "__main__":
+    print(histogram(source_text))
