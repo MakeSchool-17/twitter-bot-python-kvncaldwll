@@ -9,11 +9,9 @@ histo = {}
 
 def histogram(source_text):
     for word in source_text:
-        word = re.sub("[\,?!_.():;-]", " ", word)
-        word = word.lstrip('\"')
-        word = word.rstrip('\"')
-        word = word.lstrip('\'')
-        word = word.rstrip('\'')
+        word = word.replace("--", " ")
+        word = word.rstrip('0123456789,?!_:;.-\"')
+        word = word.lstrip('0123456789,?!_:;.-\"')
         if word not in histo:
             histo[word] = 1
         else:
@@ -23,7 +21,7 @@ def histogram(source_text):
 
 
 def unique_words(histogram):
-    return len(histogram)
+    return len(histo)
 
 
 def frequency(word, histogram):
