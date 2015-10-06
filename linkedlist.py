@@ -52,6 +52,3 @@ class LinkedList(object):
             current_node = current_node.next
         return count
 
-    # re.sub(r'-_W+', '', word)
-    #  word = word.lstrip('_-?.,"')
-    #  word = word.rstrip('_-?.,"')
