@@ -1,13 +1,10 @@
+
 class Node(object):
     def __init__(self, data = None):
         self.data = data
         self.next = None
         self.prev = None
 
-    def __str__(self):
-        # notify if node points to another node
-        has_next = ' , has next' if self.next else ''
-        return 'Node({}{})'.format(self.data, has_next)
 
 class LinkedList(object):
 
@@ -43,8 +40,8 @@ class LinkedList(object):
         new_node = Node(data)
         # new node points to previous head node
         new_node.next  = self.head
-        # old head points to node that comes before it
-        self.head.prev = new_node
+        if self.head is True:
+            self.head.prev = new_node
         #change head to new node
         self.head = new_node
         # update LinkedList size
@@ -81,3 +78,13 @@ class LinkedList(object):
 
     def calculate_size(self):
         return str(self.size)
+
+ll = LinkedList()
+node1 = ll.insert_head({'apple': 1})
+node2 = ll.insert_tail(('boy', 4))
+print(ll.head.data)
+print('next node data: ', ll.head.next.data)
+print('prev node data: ', ll.head.prev)
+print(ll.tail.data)
+print('previous node data: ', ll.tail.prev.data)
+print('next node data: ', ll.tail.next)
