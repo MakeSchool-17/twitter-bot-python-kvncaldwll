@@ -1,6 +1,6 @@
 
 class Node(object):
-    def __init__(self, data = None):
+    def __init__(self, data=None):
         self.data = data
         self.next = None
         self.prev = None
@@ -9,7 +9,7 @@ class Node(object):
 class LinkedList(object):
 
     def __init__(self):
-        #empty linked list
+        # empty linked list
         self.head = None
         self.tail = None
         self.size = 0
@@ -26,7 +26,7 @@ class LinkedList(object):
     def is_valid(self):
         # check if node is in LinkedList
         head_true = self.head is not None
-        tail_true = self.tail  is not None
+        tail_true = self.tail is not None
         size_true = self.size > 0
         if head_true and tail_true and size_true:
             return True
@@ -39,10 +39,10 @@ class LinkedList(object):
         # create a node
         new_node = Node(data)
         # new node points to previous head node
-        new_node.next  = self.head
+        new_node.next = self.head
         if self.head is True:
             self.head.prev = new_node
-        #change head to new node
+        # change head to new node
         self.head = new_node
         # update LinkedList size
         self.size += 1
@@ -65,13 +65,13 @@ class LinkedList(object):
 
     def remove_head(self):
         if self.is_empty():
-            raise ValueError ('linked list is empty!')
+            raise ValueError('linked list is empty!')
         self.head = self.head.next
         self.size -= 1
 
     def remove_tail(self):
         if self.is_empty():
-            raise ValueError ('linked list is empty!')
+            raise ValueError('linked list is empty!')
         else:
             self.tail = self.tail.prev
             self.size -= 1
